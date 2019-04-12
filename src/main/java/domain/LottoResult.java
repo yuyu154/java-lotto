@@ -30,7 +30,7 @@ public class LottoResult {
 		for (Map.Entry<Rank, Integer> entry : getMap().entrySet()) {
 			Rank rank = entry.getKey();
 			Integer buyCount = entry.getValue();
-			sum += (rank.getWinningMoney() * buyCount);
+			sum += rank.prize(buyCount);
 		}
 		return sum;
 	}

@@ -60,5 +60,9 @@ public enum Rank {
 		stringBuilder.append("( " + getWinningMoney() + "원)");
 		return stringBuilder.toString();
 	}
+
+	public long prize(int count) {
+		return (getWinningMoney() * count);
+	}
 }
 

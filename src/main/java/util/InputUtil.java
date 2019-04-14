@@ -22,25 +22,22 @@ public class InputUtil {
         }
     }
 
-    public static List<Integer> getIntList() {
+    public static List<Integer> getUserIntList() {
         try {
             return splitWithComma().stream()
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {
             OutputView.print("숫자를 입력하세요");
-            return getIntList();
+            return getUserIntList();
         }
     }
 
     private static List<String> splitWithComma() {
         try {
-            return Arrays.asList(getString().split(COMMA))
-                    .stream()
-                    .map(String::trim)
-                    .collect(Collectors.toList());
+            return Arrays.asList(getString().split(COMMA));
         } catch (Exception e) {
-            OutputView.print("로또에 제대로된 숫자를 입력하세요");
+            OutputView.print("빈칸 X");
             return splitWithComma();
         }
     }

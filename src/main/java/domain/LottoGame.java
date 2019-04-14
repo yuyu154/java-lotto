@@ -1,8 +1,10 @@
 package domain;
 
 import logic.OutputView;
-import util.LottoNumberMaker;
+import util.LottoMaker;
+import util.RandomNumberMaker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGame {
@@ -11,12 +13,20 @@ public class LottoGame {
 
     public LottoGame(int buyCount) {
         this.buyCount = buyCount;
-        lottoList = LottoNumberMaker.getLottoList(buyCount);
+        this.lottoList = makeRandomLottoList();
     }
 
     public void printResult() {
         OutputView.print(buyCount + "개를 구매했습니다");
         printLottoList();
+    }
+
+    private List<Lotto> makeRandomLottoList() {
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < buyCount; i++) {
+            lottoList.add(LottoMaker.makeRandomLotto());
+        }
+        return lottoList;
     }
 
     private void printLottoList() {

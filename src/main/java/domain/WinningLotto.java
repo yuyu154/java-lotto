@@ -10,6 +10,7 @@ public class WinningLotto {
     public WinningLotto(Lotto lotto, int bonusNo) {
         this.lotto = lotto;
         this.bonusNo = bonusNo;
+        checkWinningLotto();
     }
 
     private void checkWinningLotto() {

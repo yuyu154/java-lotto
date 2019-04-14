@@ -4,6 +4,7 @@ import domain.Lotto;
 import domain.LottoNumber;
 import domain.WinningLotto;
 import util.InputUtil;
+import util.LottoMaker;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,29 +22,25 @@ public class InputView {
     }
 
     public static WinningLotto getWinningLotto() {
-        Lotto winningLotto = makeWinningLotto();
-        int bonusNum = getBonusNum();
-        return new WinningLotto(winningLotto, bonusNum);
+        return makeWinningLotto(getUserLotto());
     }
 
-    private static Lotto makeWinningLotto() {
+    private static WinningLotto makeWinningLotto(Lotto lotto) {
         try {
-            return new Lotto(getValidLottoNumberList());
+            return new WinningLotto(lotto, getBonusNum());
         } catch (Exception e) {
             OutputView.print(e.getMessage());
-            return makeWinningLotto();
+            return makeWinningLotto(lotto);
         }
     }
 
-    private static List<Integer> getValidLottoNumberList() {
+    private static Lotto getUserLotto() {
         try {
-            return InputUtil.getIntList().stream()
-                    .map(LottoNumber::new)
-                    .map(LottoNumber::intValue)
-                    .collect(Collectors.toList());
+            OutputView.print("지난 주 당첨 번호 입력");
+            return LottoMaker.makeUserLotto(InputUtil.getUserIntList());
         } catch (Exception e) {
             OutputView.print(e.getMessage());
-            return getValidLottoNumberList();
+            return getUserLotto();
         }
     }
 

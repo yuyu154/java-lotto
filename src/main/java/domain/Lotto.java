@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 로또 한장을 의미하는 객체
@@ -15,4 +17,10 @@ public class Lotto {
     }
 
     // 추가 기능 구현
+    private void checkIfValidLotto() {
+        Set checkSet = new HashSet(numbers);
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("중복되지 않게 로또 6자리 입력하세요");
+        }
+    }
 }

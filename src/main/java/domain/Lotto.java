@@ -25,6 +25,12 @@ public class Lotto {
         }
     }
 
+    public int getCountOfMatch(Lotto other) {
+        return (int) numbers.stream()
+                .filter(number -> other.isContain(number))
+                .count();
+    }
+
     public boolean isContain(int number) {
         return numbers.contains(number);
     }

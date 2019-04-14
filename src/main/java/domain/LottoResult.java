@@ -1,5 +1,7 @@
 package domain;
 
+import logic.OutputView;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,4 +31,8 @@ public class LottoResult {
         }
     }
 
+    public void printStat() {
+        OutputView.print("당첨 통계");
+        OutputView.print("-------");
+    }
 }

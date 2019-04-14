@@ -8,6 +8,6 @@ public class Player {
     }
 
     public void play() {
-
+        OutputView.printLottoList(buyCount);
     }
 }

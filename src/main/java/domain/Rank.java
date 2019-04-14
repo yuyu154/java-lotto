@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Arrays;
+
 /**
  * 로또 등수를 의미하는 enum
  */
@@ -39,7 +41,7 @@ public enum Rank {
         }
 
         for (Rank rank : values()) {
-            if (rank.matchCount(countOfMatch)) {
+            if (rank.matchCount(countOfMatch) && rank != SECOND) {
                 return rank;
             }
         }

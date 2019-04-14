@@ -1,5 +1,7 @@
 package domain;
 
+import logic.OutputView;
+
 import java.util.Arrays;
 
 /**
@@ -51,6 +53,27 @@ public enum Rank {
 
     private boolean matchCount(int countOfMatch) {
         return this.countOfMatch == countOfMatch;
+    }
+
+    private boolean matchMoney(int winningMoneymoney) {
+        return this.winningMoney == winningMoneymoney;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder ret = new StringBuilder();
+        ret.append(this.getCountOfMatch() + "개 일치 ");
+        ret.append(getBonusString());
+        ret.append("(" + this.getWinningMoney() + "원)");
+        return ret.toString();
+    }
+
+    private String getBonusString() {
+        StringBuilder ret = new StringBuilder();
+        if (SECOND.matchMoney(this.winningMoney)) {
+            ret.append(", 보너스 볼 일치");
+        }
+        return ret.toString();
     }
 }
 

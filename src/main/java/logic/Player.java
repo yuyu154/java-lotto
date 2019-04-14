@@ -19,5 +19,6 @@ public class Player {
         OutputView.printBuyResult(buyCount, userLottoList);
         WinningLotto winningLotto = InputView.getWinningLotto();
         LottoResult lottoResult = new LottoResult(userLottoList, winningLotto);
+        lottoResult.printStat();
     }
 }

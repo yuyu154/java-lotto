@@ -1,12 +1,10 @@
 package logic;
 
 public class Player {
-    private final int money;
+    private final int buyCount;
 
     public Player() {
-    }
-
-    public void init() {
+        buyCount = InputView.getBuyCount();
     }
 
     public void play() {

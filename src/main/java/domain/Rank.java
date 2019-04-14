@@ -75,5 +75,9 @@ public enum Rank {
         }
         return ret.toString();
     }
+
+    public int getPrize(int count) {
+        return (this.winningMoney * count);
+    }
 }
 

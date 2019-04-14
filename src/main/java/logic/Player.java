@@ -20,5 +20,6 @@ public class Player {
         WinningLotto winningLotto = InputView.getWinningLotto();
         LottoResult lottoResult = new LottoResult(userLottoList, winningLotto);
         lottoResult.printStat();
+        System.out.printf("수익률은 %.3f 입니다", lottoResult.getProfitRate());
     }
 }

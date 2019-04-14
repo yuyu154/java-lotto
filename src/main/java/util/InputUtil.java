@@ -25,6 +25,7 @@ public class InputUtil {
     public static List<Integer> getUserIntList() {
         try {
             return splitWithComma().stream()
+                    .map(String::trim)
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (Exception e) {

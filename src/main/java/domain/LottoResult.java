@@ -49,4 +49,23 @@ public class LottoResult {
             OutputView.print(" - " + resultMap.get(rank) + "개");
         }
     }
+
+    public double getProfitRate() {
+        return (double) (getSum() / getCount());
+    }
+    private int getCount() {
+        int sum = 0;
+        for (Rank rank : Rank.values()) {
+            sum += resultMap.get(rank);
+        }
+        return sum;
+    }
+
+    private int getSum() {
+        int sum = 0;
+        for (Rank rank : Rank.values()) {
+            sum += rank.getPrize(resultMap.get(rank));
+        }
+        return sum;
+    }
 }

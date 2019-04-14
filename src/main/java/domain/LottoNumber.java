@@ -8,6 +8,7 @@ public class LottoNumber {
 
     public LottoNumber(int lottoNumber) {
         this.lottoNumber = lottoNumber;
+        checkValidNumber();
     }
 
     public int intValue() {
@@ -15,7 +16,7 @@ public class LottoNumber {
     }
 
     private void checkValidNumber() {
-        if (lottoNumber < MIN_NUMBER || lottoNumber < MAX_NUMBER) {
+        if (lottoNumber < MIN_NUMBER || lottoNumber > MAX_NUMBER) {
             throw new IllegalArgumentException("1에서 45사이의 숫자를 입력하세요");
         }
     }

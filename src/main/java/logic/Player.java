@@ -1,5 +1,7 @@
 package logic;
 
+import domain.LottoGame;
+
 public class Player {
     private final int buyCount;
 
@@ -8,6 +10,7 @@ public class Player {
     }
 
     public void play() {
-        OutputView.printLottoList(buyCount);
+        LottoGame game = new LottoGame(buyCount);
+        OutputView.printLottoList(game);
     }
 }

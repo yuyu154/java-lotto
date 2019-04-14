@@ -6,8 +6,8 @@ import domain.WinningLotto;
 import util.InputUtil;
 import util.LottoMaker;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InputView {
     private static final int MIN_MONEY = 1000;
@@ -19,6 +19,14 @@ public class InputView {
             //다시
         }
         return (money / MIN_MONEY);
+    }
+
+    public static List<Lotto> getRandomLottoList(int buyCount) {
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < buyCount; i++) {
+            lottoList.add(LottoMaker.makeRandomLotto());
+        }
+        return lottoList;
     }
 
     public static WinningLotto getWinningLotto() {

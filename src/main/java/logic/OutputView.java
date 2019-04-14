@@ -1,6 +1,8 @@
 package logic;
 
-import domain.LottoGame;
+import domain.Lotto;
+
+import java.util.List;
 
 public class OutputView {
 
@@ -8,8 +10,17 @@ public class OutputView {
         System.out.println(str);
     }
 
-    public static void printLottoList(LottoGame game) {
-        game.printResult();
+    public static void printBuyResult(int buyCount, List<Lotto> userLottoList) {
+        printResult(buyCount);
+        printLottoList(userLottoList);
+    }
+
+    public static void printResult(int buyCount) {
+        OutputView.print(buyCount + "개를 구매했습니다");
+    }
+
+    private static void printLottoList(List<Lotto> lottoList) {
+        lottoList.forEach(lotto -> System.out.println(lotto));
     }
 }
 

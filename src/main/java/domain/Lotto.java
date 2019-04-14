@@ -14,6 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
+        checkIfValidLotto();
     }
 
     // 추가 기능 구현
@@ -22,6 +23,10 @@ public class Lotto {
         if (checkSet.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("중복되지 않게 로또 6자리 입력하세요");
         }
+    }
+
+    public boolean isContain(int number) {
+        return numbers.contains(number);
     }
 
     @Override

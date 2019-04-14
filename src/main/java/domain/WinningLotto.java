@@ -12,6 +12,13 @@ public class WinningLotto {
         this.bonusNo = bonusNo;
     }
 
+    private void checkWinningLotto() {
+        if (lotto.isContain(bonusNo)) {
+            throw new IllegalArgumentException("bonusNum을 중복되지 않게 입력하세요");
+        }
+
+    }
+
     public Rank match(Lotto userLotto) {
         // TODO 로직 구현
         return null;

@@ -2,6 +2,7 @@ package util;
 
 import domain.Lotto;
 import domain.LottoNumber;
+import logic.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,12 @@ public class LottoNumberMaker {
     }
 
     private static Lotto getRandomLotto() {
-        return new Lotto(makeRandomIntegerList());
+        try {
+            return new Lotto(makeRandomIntegerList());
+        } catch (Exception e) {
+            OutputView.print(e.getMessage());
+            return getRandomLotto();
+        }
     }
 
     private static List<Integer> makeRandomIntegerList() {

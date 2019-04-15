@@ -29,39 +29,26 @@ public class LottoResult {
         }
     }
 
-    public void printStat() {
-        OutputView.print("당첨 통계");
-        OutputView.print("-------");
-        for (Rank rank : reverseValues()) {
-            printRankInfo(rank);
-        }
-    }
-
-    private static List<Rank> reverseValues() {
-        List<Rank> rankList = Arrays.asList(Rank.values());
-        Collections.reverse(rankList);
-        return rankList;
-    }
-
-    private void printRankInfo(Rank rank) {
-        if (Rank.MISS != rank) {
+    public void printRankInfo(Rank rank) {
+        if (rank != Rank.MISS) {
             System.out.print(rank);
             OutputView.print(" - " + resultMap.get(rank) + "개");
         }
     }
 
     public double getProfitRate() {
-        return (double) (getSum() / getCount());
-    }
-    private int getCount() {
-        int sum = 0;
-        for (Rank rank : Rank.values()) {
-            sum += resultMap.get(rank);
-        }
-        return sum;
+        return (getWinningSum() / getBuySum());
     }
 
-    private int getSum() {
+    private int getBuySum() {
+        int sum = 0;
+        for (Rank rank : resultMap.keySet()) {
+            sum += resultMap.get(rank);
+        }
+        return Money.getTotalBuy(sum);
+    }
+
+    private int getWinningSum() {
         int sum = 0;
         for (Rank rank : Rank.values()) {
             sum += rank.getPrize(resultMap.get(rank));

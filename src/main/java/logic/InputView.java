@@ -2,6 +2,7 @@ package logic;
 
 import domain.Lotto;
 import domain.LottoNumber;
+import domain.Money;
 import domain.WinningLotto;
 import util.InputUtil;
 import util.LottoMaker;
@@ -10,20 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
-    private static final int MIN_MONEY = 1000;
 
-    public static int getBuyCount() {
-        System.out.println("구입금액을 입력하세요");
-        int money = InputUtil.getInt();
-        if (money < MIN_MONEY) {
-            //다시
+    public static Money getMoney() {
+        try {
+            System.out.println("구입금액을 입력하세요");
+            return new Money(InputUtil.getInt());
+        } catch (IllegalArgumentException e) {
+            OutputView.print(e.getMessage());
+            return getMoney();
         }
-        return (money / MIN_MONEY);
     }
 
-    public static List<Lotto> getRandomLottoList(int buyCount) {
+    public static List<Lotto> getRandomLottoList(Money money) {
         List<Lotto> lottoList = new ArrayList<>();
-        for (int i = 0; i < buyCount; i++) {
+        for (int i = 0; i < money.getGameCount(); i++) {
             lottoList.add(LottoMaker.makeRandomLotto());
         }
         return lottoList;
